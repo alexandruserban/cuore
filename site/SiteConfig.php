@@ -14,8 +14,8 @@ class SiteConfig extends CuoreConfig {
 	function init() 
     {
 		parent::init();
-		/* path */
-		self::$path['templates'] = self::$path['base']. 'templates/';
+		/* template dir */
+		self::$dir['templates'] = self::$dir['base']. 'templates/';
 		
 		/* urls */
 		self::$url['base'] = 'http://cuore.lo';//$_SERVER['SERVER_NAME'];

@@ -28,19 +28,25 @@ if (ENVIRONMENT == 'prod') {
     SiteConfig::initDev();
 }
 
-SiteRoute::init();
+
 SiteRoute::$controller_prefix = SiteConfig::$core['controller_prefix'];
 SiteRoute::$default_controller = SiteConfig::$core['default_controller'];
 SiteRoute::$default_method = SiteConfig::$core['default_method'];
+SiteRoute::init();
         
 SiteView::$cache_time = SiteConfig::$core['cache_time'];
-SiteView::$tpl_dir = SiteConfig::$path['templates'];
-SiteView::$tmp_cache_dir = SiteConfig::$path['tmp_cache_path'];
+SiteView::$tpl_dir = SiteConfig::$dir['templates'];
+SiteView::$cache_dir = SiteConfig::$dir['cache'];
+SiteView::init();
+
+CuoreLog::$dir = SiteConfig::$dir['log'];
+CuoreLog::$file = SiteConfig::$file['log'];
+CuoreLog::init();
 
 CuoreDb::connect(CuoreConfig::$db['host'], CuoreConfig::$db['user'], CuoreConfig::$db['pass'], CuoreConfig::$db['db']);
 
 CuoreConsole::$model_prefix = SiteConfig::$core['model_prefix'];
-CuoreConsole::$models_dir = SiteConfig::$core['models_dir'];
+CuoreConsole::$model_dir = SiteConfig::$dir['model'];
 
 if (!defined('CONSOLE')) {
     $parts = explode('/', SiteConfig::$url['base']);

@@ -1,12 +1,12 @@
 <?php
 class CuoreConsole{
-    static $models_dir;
+    static $model_dir;
     static $model_prefix;
     function BuildModel($db_name, $table_name)
     {
         $fields = CuoreDb::getTableFields($db_name, $table_name);
         $class_name = self::$model_prefix . ucfirst($table_name);
-        $file = self::$models_dir . $class_name . '.php';
+        $file = self::$model_dir . $class_name . '.php';
         $custom_content = '';
         if (file_exists($file)) {
             $old_content = explode("/*custom methods*/", file_get_contents($file));

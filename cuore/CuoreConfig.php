@@ -2,20 +2,23 @@
 
 class CuoreConfig {
 
-    static public $path;
+    static public $dir;
     static public $url;
     static public $db;
     static public $core;
+    static public $file;
 
     function init() {
         /* user paths */
-        self::$path['base'] = BASE_PATH;
-        self::$path['pub'] = self::$path['base'] . 'pub/';
-        self::$path['js'] = self::$path['pub'] . 'js/';
-        self::$path['css'] = self::$path['pub'] . 'css/';
-        self::$path['images'] = self::$path['pub'] . 'images/';
-        self::$path['templates'] = self::$path['base'] . 'templates/';
-        self::$path['tmp_cache_path'] = self::$path['base'] . 'cache/';
+        self::$dir['base'] = BASE_PATH;
+        self::$dir['pub'] = self::$dir['base'] . 'pub/';
+        self::$dir['js'] = self::$dir['pub'] . 'js/';
+        self::$dir['css'] = self::$dir['pub'] . 'css/';
+        self::$dir['images'] = self::$dir['pub'] . 'images/';
+        self::$dir['templates'] = self::$dir['base'] . 'templates/';
+        self::$dir['cache'] = self::$dir['base'] . 'cache/';
+        self::$dir['log'] = self::$dir['base'] . 'logs/';
+        self::$dir['model'] = self::$dir['base'] . 'model/';
         /* urls */
         self::$url['base'] = 'cuore.lo'; //$_SERVER['SERVER_NAME'];
 
@@ -29,10 +32,11 @@ class CuoreConfig {
         self::$core['controller_prefix'] = 'Controller';
         self::$core['default_controller'] = 'Default';
         self::$core['default_method'] = 'main';
-        self::$core['log_file_path'] = self::$path['base'] . 'logs/log.txt';
-        self::$core['models_dir'] = self::$path['base'] . 'model/';
         self::$core['model_prefix'] = 'Model';
         self::$core['cache_time'] = 3600;
+        
+        /* files */
+        self::$file['log'] = 'log.txt';
     }
 
 }
