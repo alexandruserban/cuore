@@ -12,7 +12,7 @@ class CuoreConsole{
             $old_content = explode("/*custom methods*/", file_get_contents($file));
             
             if (count($old_content) == 2) {
-               $rest = trim(str_replace('', '', substr($old_content[1], 0, strrpos($old_content[1], '}'))));
+               $rest = trim(substr($old_content[1], 0, strrpos($old_content[1], '}')));
 $custom_content .= <<<EOT
     
     /*custom methods*/
@@ -35,7 +35,7 @@ EOT;
     public $$field;
 
 EOT;
-            $camel_case_field = str_replace(' ', '', ucfirst(str_replace('_', ' ', $field)));
+            $camel_case_field = str_replace(' ','', ucwords(preg_replace('/[^a-zA-Z0-9]/',' ', $field)));
             $getset_ers .= 
 <<<EOT
             
