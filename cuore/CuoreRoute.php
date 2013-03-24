@@ -78,4 +78,3 @@ class CuoreRoute
 		return $parameters;
 	}
 }
-?>

@@ -2,4 +2,3 @@
 class SiteRoute extends CuoreRoute {
     
 }
-?>

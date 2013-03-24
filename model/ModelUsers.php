@@ -54,4 +54,3 @@ class ModelUsers extends CuoreModel {
         
     }
 }
-;?>

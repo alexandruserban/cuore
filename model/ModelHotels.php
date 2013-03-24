@@ -12,4 +12,3 @@ class ModelHotels extends CuoreModel {
         return $this->id = $id;
     }
 }
-;?>

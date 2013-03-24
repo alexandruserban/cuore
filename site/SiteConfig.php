@@ -34,4 +34,3 @@ class SiteConfig extends CuoreConfig {
         self::$core['cache_time'] = -1;
 	}
 }
-?>

@@ -24,4 +24,3 @@ class ControllerUsers extends CuoreController{
 	}
 }
 
-?>

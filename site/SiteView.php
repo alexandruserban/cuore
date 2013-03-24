@@ -2,4 +2,3 @@
 class SiteView extends CuoreView {
     
 }
-?>

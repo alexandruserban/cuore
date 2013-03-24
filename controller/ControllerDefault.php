@@ -6,5 +6,5 @@ class ControllerDefault extends CuoreController {
         SiteView::load('index.tpl');
     }
 }
-?>
+
  

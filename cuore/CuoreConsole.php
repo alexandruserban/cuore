@@ -12,7 +12,7 @@ class CuoreConsole{
             $old_content = explode("/*custom methods*/", file_get_contents($file));
             
             if (count($old_content) == 2) {
-               $rest = trim(str_replace('?>', '', substr($old_content[1], 0, strrpos($old_content[1], '}'))));
+               $rest = trim(str_replace('', '', substr($old_content[1], 0, strrpos($old_content[1], '}'))));
 $custom_content .= <<<EOT
     
     /*custom methods*/
@@ -49,7 +49,7 @@ EOT;
     }
 EOT;
         }
-        $content .= $getset_ers . $custom_content . "\n}\n;?>";
+        $content .= $getset_ers . $custom_content . "\n}\n";
         file_put_contents($file, $content);
     }
     
@@ -61,4 +61,4 @@ EOT;
         }
     }
 }
-?>
+
