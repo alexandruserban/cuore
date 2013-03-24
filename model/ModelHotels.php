@@ -1,7 +1,7 @@
 <?php
 class ModelHotels extends CuoreModel {
-    static protected $table = 'hotels';
-    protected $id;
+    static public $table = 'hotels';
+    public $id;
             
     function getId()
     {

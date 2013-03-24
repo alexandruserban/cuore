@@ -46,14 +46,12 @@ class ModelUsers extends CuoreModel {
     function setHash($hash)
     {
         return $this->hash = $hash;
-    }
-    /* use this comment below to be appended when the class is recreated via cuore.php */
+    }    
     /*custom methods*/
     function fetchAll()
     {
         $this->fetchAllAssoc();
         
     }
-
 }
 ;?>
