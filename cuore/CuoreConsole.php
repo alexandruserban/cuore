@@ -5,7 +5,7 @@ class CuoreConsole{
     function BuildModel($db_name, $table_name)
     {
         $fields = CuoreDb::getTableFields($db_name, $table_name);
-        $class_name = self::$model_prefix . ucfirst($table_name);
+        $class_name = self::$model_prefix . str_replace(' ','', ucwords(preg_replace('/[^a-zA-Z0-9]/',' ', $table_name)));
         $file = self::$model_dir . $class_name . '.php';
         $custom_content = '';
         if (file_exists($file)) {

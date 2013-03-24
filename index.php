@@ -6,11 +6,17 @@ define('ENVIRONMENT', 'dev');
 /* light autoloader class PHP 5.3 required*/
 spl_autoload_register(function ($class) {
     /* if your using namespaceing */
-    $class = array_pop(explode('\\', $class));
+    $class = array_pop(explode('\\', preg_replace('/[^a-zA-Z0-9\_]/', '',$class)));
     
-	$path = strtolower(preg_replace(array('/([A-Z])/'), array('/$1'), $class));
-	$file = BASE_PATH . substr($path, 1, strrpos($path, '/') - 1) . '/' . $class . '.php';
-	
+	$dir = strtolower(preg_replace(array('/([A-Z])/'), array('/$1'), $class));
+	$file = BASE_PATH . substr($dir, 1) . '/' . $class . '.php';
+    $dir_parts = explode('/', $dir);
+    
+	while (!file_exists($file)) {
+        array_pop($dir_parts);
+        $file = BASE_PATH . substr(implode('/', $dir_parts), 1) . '/' . $class . '.php';
+    }
+    
     require_once $file;
 });
 
