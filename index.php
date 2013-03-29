@@ -12,12 +12,16 @@ spl_autoload_register(function ($class) {
 	$file = BASE_PATH . substr($dir, 1) . '/' . $class . '.php';
     $dir_parts = explode('/', $dir);
     
-	while (!file_exists($file)) {
+	while (!file_exists($file) && count($dir_parts)) {
         array_pop($dir_parts);
         $file = BASE_PATH . substr(implode('/', $dir_parts), 1) . '/' . $class . '.php';
     }
     
-    require_once $file;
+    if (file_exists($file)) {
+        require_once $file;
+    } else {
+        return false;
+    }
 });
 
 if (ENVIRONMENT == 'prod') {
@@ -34,16 +38,15 @@ if (ENVIRONMENT == 'prod') {
     SiteConfig::initDev();
 }
 
-
-SiteRoute::$controller_prefix = SiteConfig::$core['controller_prefix'];
-SiteRoute::$default_controller = SiteConfig::$core['default_controller'];
-SiteRoute::$default_method = SiteConfig::$core['default_method'];
-SiteRoute::init();
+CuoreRoute::$controller_prefix = SiteConfig::$core['controller_prefix'];
+CuoreRoute::$default_controller = SiteConfig::$core['default_controller'];
+CuoreRoute::$default_method   = SiteConfig::$core['default_method'];
+CuoreRoute::init();
         
-SiteView::$cache_time = SiteConfig::$core['cache_time'];
-SiteView::$tpl_dir = SiteConfig::$dir['templates'];
-SiteView::$cache_dir = SiteConfig::$dir['cache'];
-SiteView::init();
+CuoreView::$cache_time = SiteConfig::$core['cache_time'];
+CuoreView::$tpl_dir = SiteConfig::$dir['templates'];
+CuoreView::$cache_dir = SiteConfig::$dir['cache'];
+CuoreView::init();
 
 CuoreLog::$dir = SiteConfig::$dir['log'];
 CuoreLog::$file = SiteConfig::$file['log'];
