@@ -57,6 +57,11 @@ CuoreDb::connect(CuoreConfig::$db['host'], CuoreConfig::$db['user'], CuoreConfig
 CuoreConsole::$model_prefix = SiteConfig::$core['model_prefix'];
 CuoreConsole::$model_dir = SiteConfig::$dir['model'];
 
+
+SiteRoute::$fallback_function = function () {
+  echo "YEAH";  
+};
+
 if (!defined('CONSOLE')) {
     $parts = explode('/', SiteConfig::$url['base']);
     try {

@@ -17,7 +17,7 @@ class CuoreRoute
     
 	function init () {
 
-		CuoreRoute::$fallback_function = function ($segments) {
+		self::$fallback_function = function ($segments) {
 			/*the URL does not provide any callable function name*/ 
             //CuoreDebug::printhr("No Controller goes by that name here");
             throw new CuoreException('E01', '', '<i>' . CuoreRoute::$controller . '</i> &raquo; <i>' . CuoreRoute::$method . '</i>');
